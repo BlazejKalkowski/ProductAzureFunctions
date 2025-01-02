@@ -1,4 +1,4 @@
-# Template API and Azure Functions - Queue and Table Integration Example
+# Template API and Azure Functions - Queue and Table Integration
 
 ## Project Description
 
