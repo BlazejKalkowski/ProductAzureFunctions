@@ -39,3 +39,42 @@ After making a request to the API endpoint, a new product is sent to the queue, 
 - **Azure Functions Core Tools** - to run functions locally.
 - **.NET Core** - to run the API.
 - **Azure Storage Emulator** (or installed Azure Storage) - to emulate queues and tables.
+
+
+---
+
+## Configure Your Application
+
+### Step 1: Retrieve Access Keys
+1. Go to your Azure Storage account in the Azure Portal.
+2. Navigate to **Access keys**.
+3. Copy the **Connection string** under the key you want to use (e.g., `key1`).
+
+### Step 2: Update Configuration Files
+
+#### `appsettings.json` in `ProductAzureFunctions.API`
+
+```json
+{
+  "ConnectionStrings": {
+    "AzureStorage": "<your_connection_string>"
+  }
+}
+```
+
+#### `local.settings.json` in `ProductAzureFunctions.Functions`
+
+local.settings.json in ProductAzureFunctions.Functions
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<your_connection_string>",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "ProductStorage": "<your_connection_string>",
+    "AzureStorageName": "<your_connection_name>",
+    "AzureStorageKey": "<your_storage_Key>",
+    "AzureTableUri": "<your_storateg_URI>"
+  }
+}
+```
